@@ -66,42 +66,21 @@ let appData = {
 			console.log(appData.optionalExpenses);
 		}
 	},
+	chooseIncome: function(){
+		let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
+
+		if (typeof(items) != "string" || items == "" || typeof(items) == null) {
+            alert("Введите корректные данные");
+		}else {
+			appData.income = items.split(', ');
+			appData.income.push(prompt("Может что-то еще?"));
+			appData.income.sort();
+		}	
+		appData.income.forEach (function (itemIncome, i) {
+            alert("Способы доп. заработка: " + (i+1) + " - " + itemIncome);
+        });
+	},
 };
-
-
-// Цикл While
-
-// let i = 0;
-// while (i < 2) {
-// 	let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
-// 		b = prompt("Во сколько обойдется?", '');
-
-// 	if( typeof(a) === 'string' && typeof(a) != null && typeof(b) != null
-// 		&& a != '' && b != '' && a.length < 50) {
-// 		console.log('done');
-// 		appData.expenses[a] = b;
-// 	}else{
-// 		console.log('error');
-// 		i--;
-// 	}
-// 	i++;
-// }	
-
-// Цикл do ... while
-
-// let i = 0;
-// do {
-// 	let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
-// 	b = prompt("Во сколько обойдется?", '');
-
-// 	if( typeof(a) === 'string' && typeof(a) != null && typeof(b) != null
-// 		&& a != '' && b != '' && a.length < 50) {
-// 		console.log('done');
-// 		appData.expenses[a] = b;
-// 	}else{
-// 		console.log('error');
-// 		i--;
-// 	}
-// 	i++;
-// }	
-// while (i < 2);
+for (let item in appData) {
+    console.log("Наша программа включает в себя данные: " + item + " - " + appData[item]);
+}
